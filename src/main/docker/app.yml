@@ -1,0 +1,12 @@
+version: '2'
+services:
+    microapi-app:
+        image: microapi
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://microapi-mysql:3306/microapi?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    microapi-mysql:
+        extends:
+            file: mysql.yml
+            service: microapi-mysql
